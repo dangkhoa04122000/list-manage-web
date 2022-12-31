@@ -1,0 +1,52 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.sidebar {
+    width: 140px;
+}
+
+.sidebar #sidenav {
+    height: 100%;
+}
+
+#sidenav a {
+    display: inline-block;
+    position: fixed;
+    left: 0;
+    width: 140px;
+    padding: 10px 0px;
+    font-size: 15px;
+    text-decoration: none;
+    color: #000;
+    border-bottom: 2px solid rgb(118, 116, 116);
+}
+
+#sidenav #sidenav-user {
+    top: 60px;
+}
+
+#sidenav #sidenav-account {
+    top: 112px;
+}
+
+#sidenav #sidenav-dept {
+    top: 164px;
+}
+
+#sidenav a i {
+    font-size: 30px;
+    padding-left: 5px;
+}
+
+#sidenav span {
+    position: absolute;
+    line-height: 31px;
+    left: 55px;
+}
+
+#sidenav a:hover {
+    color: rgb(254, 97, 0);
+}

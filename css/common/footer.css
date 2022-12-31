@@ -1,0 +1,26 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #aaa;
+    line-height: 40px;
+    text-align: center;
+    border-top: 2px solid rgb(118, 116, 116);
+    z-index: 4;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #000;
+}
+
+.footer a:hover {
+    color: rgb(254, 97, 0);
+}

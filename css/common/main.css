@@ -1,0 +1,40 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#department-select:invalid {
+    color: gray;
+}
+
+.main {
+    position: absolute;
+    width: calc(100% - 140px);
+    min-height: calc(100% - 100px);
+    top: 60px;
+    left: 140px;
+    margin-bottom: 40px;
+    background-color: #eee;
+    padding-bottom: 40px;
+    border-left: 2px solid rgb(118, 116, 116);
+}
+
+.main a:hover {
+    color: rgb(254, 97, 0);
+}
+
+.main .home-content {
+    text-align: center;
+    padding-top: 150px;
+}
+
+.home-content #line-1 {
+    font-size: 80px;
+}
+
+.home-content #line-2 {
+    font-size: 50px;
+    padding-top: 25px;
+    padding-bottom: 250px;
+}

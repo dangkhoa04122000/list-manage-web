@@ -1,0 +1,68 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    border-bottom: 2px solid rgb(118, 116, 116);
+    z-index: 1;
+}
+
+.header #navbar {
+    height: 100%;
+    position: relative;
+}
+
+#navbar .vti-logo {
+    display: inline-block;
+    height: 60px;
+    width: 142px;
+    line-height: 60px;
+    text-align: center;
+    border-right: 2px solid rgb(118, 116, 116);
+}
+
+#navbar img {
+    height: 40px;
+}
+
+#navbar .user-info {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+}
+
+#navbar a {
+    text-decoration: none;
+    color: #000;
+}
+
+#navbar i {
+    display: inline-block;
+    font-size: 28px;
+    line-height: 60px;
+    padding: 0px 10px;
+}
+
+#navbar .full-name,
+#navbar .sign-out {
+    display: inline-block;
+}
+
+#navbar .fa-house-chimney {
+    font-size: 34px;
+    line-height: 60px;
+    position: absolute;
+    top: 0;
+}
+
+#navbar a:hover,
+#navbar .menu-icon:hover {
+    color: rgb(254, 97, 0);
+}

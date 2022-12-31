@@ -1,0 +1,247 @@
+<div class="dlv-container">
+    <div class="dlv-heading">
+        DEPARTMENT LIST
+    </div>
+    <div class="filter-wrapper">
+        <div class="filter-item">
+            <label for="min-date">Min Date </label>
+            <input type="date" id="filter-min-date-select">
+        </div>
+        <div class="filter-item">
+            <label for="min-date">Max Date </label>
+            <input type="date" id="filter-max-date-select">
+        </div>
+        <div class="filter-item">
+            <select name="" id="filter-type-select">
+                <option value="" selected>Type</option>
+                <option value="PM">PM</option>
+                <option value="SCRUM_MASTER">Scrum Master</option>
+                <option value="DEV">Developer</option>
+                <option value="TEST">Test</option>
+            </select>
+        </div>
+        <div class="filter-item">
+            <a href="#" data-toggle="tooltip" title="Filter" onclick="filterDepartment()">
+                <i class="fa-solid fa-filter"></i>
+            </a>
+        </div>
+    </div>
+    <div class="dlv-table">
+        <div class="table-wrapper department-accounts-table-wrapper">
+            <div class="function-bar">
+                <div class="search-bar">
+                    <i class="fas fa-search search-icon"></i>
+                    <input class="form-control" type="text" id="search-department-input" placeholder="Search by name..." data-toggle="tooltip">
+                </div>
+                <div class="add-sync-del-btn">
+                    <a href="#" data-toggle="tooltip" title="Refresh" onclick="refreshDepartmentList()">
+                        <i class="fas fa-sync"></i>
+                    </a>
+                    <a href="#" data-toggle="tooltip" title="Add" onclick="showAddDepartmentModal()">
+                        <i class="fa-solid fa-square-plus"></i>
+                    </a>
+                    <a href="#" data-toggle="tooltip" title="Delete" onclick="showDeleteMultipleDepartmentsModal()">
+                        <i class="fa-regular fa-trash-can"></i>
+                    </a>
+                </div>
+            </div>
+            <table class="table table-striped table-hover" id="mytable">
+                <thead>
+                    <tr>
+                        <th style="width: 45px;">
+                        </th>
+                        <th style="width: auto;" id="th-name">
+                            <a href="#" onclick="sortByName()">
+                                Name 
+                                <i class="fa-solid fa-sort"></i>
+                                <i class="fa-solid fa-sort-up"></i>
+                                <i class="fa-solid fa-sort-down"></i>
+                            </a>
+                        </th>
+                        <th style="width: 18%;" id="th-totalMember">
+                            <a href="#" onclick="sortByTotalMember()">
+                                Total member 
+                                <i class="fa-solid fa-sort"></i>
+                                <i class="fa-solid fa-sort-up"></i>
+                                <i class="fa-solid fa-sort-down"></i>
+                            </a>
+                        </th>
+                        <th style="width: 18%;">
+                            Type
+                        </th>
+                        <th style="width: 18%;" id="th-createDate">
+                            <a href="#" onclick="sortByCreateDate()">
+                                Create Date
+                                <i class="fa-solid fa-sort"></i>
+                                <i class="fa-solid fa-sort-up"></i>
+                                <i class="fa-solid fa-sort-down"></i> 
+                            </a>
+                        </th>
+                        <th style="width: 180px;" id="th-actions">
+                            Actions
+                            </a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+
+            </table>
+            <input type="hidden" id="name_order" value="asc">
+            <input type="hidden" id="totalMember_order" value="asc">
+            <input type="hidden" id="createDate_order" value="asc">
+
+            <div class="page-nav">
+                <input type="button" value="Previous" id="department-previousPage-btn" onclick="getPreviousDepartmentPage()">
+                <div class="page-info" id="department-page-info">
+
+                </div>
+                <input type="button" value="Next" id="department-nextPage-btn" onclick="getNextDepartmentPage()">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Add and Update Department modal HTML -->
+    <div class="modal fade" id="addAndUpdateDepartmentModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="addAndUpdateDepartment-modal-title" style="text-align: center; font-size: 25px;">
+
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="department-id" name="id" value="">
+
+                    <label for="department-name"><b>Name:</b></label>
+                    <input class="form-control" type="text" placeholder="Department Name" name="department-name" id="modal-department-name" required>
+
+                    <label for="type" id="type-label"><b>Type:</b></label>
+                    <select class="form-control" name="type" id="modal-type-select">
+                        <option value="PickAType" disabled selected>- Pick a type -</option>
+                        <option value="PM">PM</option>
+                        <option value="Scrum Master">Scrum Master</option>
+                        <option value="Developer">Developer</option>
+                        <option value="Test">Test</option>
+                    </select>
+
+                    <div id="modal-department-input-errMess" class="input-errMess">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default save-btn" onclick="saveDepartment()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete multiple departments modal HTML -->
+    <div class="modal fade" id="deleteMultipleDepartmentsModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" style="text-align: center; font-size: 24px;">Delete Department</h4>
+                </div>
+                <div class="modal-body" id="delete-departments-confirm-mess">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="delete-multiple-departments-btn" type="button" class="btn btn-default delete-btn" onclick="deleteMultipleDepartments()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Single Department delete modal HTML -->
+    <div class="modal fade" id="deleteSingleDepartmentModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" style="text-align: center; font-size: 24px;">Delete Deparment</i>
+                    </h4>
+                </div>
+                <input type="hidden" id="delete-single-department-id" name="id" value="">
+                <div class="modal-body" id="delete-single-department-confirm-mess">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="delete-single-department-btn" type="button" class="btn btn-default delete-btn" onclick="deleteSingleDepartment()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Account to Department modal HTML -->
+    <div class="modal fade" id="addAccountsToDepartmentModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="addAccountToDepartment-modal-title" style="text-align: center; font-size: 25px;">
+
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="addAccountToDepartmentModal-department-id" name="id" value="">
+                    <table class="table table-striped table-hover" id="department-accounts-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 30px;">
+                                </th>
+                                <th style="width: auto;" id="department-accounts-th-username">
+                                    <a href="#" onclick="sortByDeptAccUsername()">
+                                            Username 
+                                            <i class="fa-solid fa-sort"></i>
+                                            <i class="fa-solid fa-sort-up"></i>
+                                            <i class="fa-solid fa-sort-down"></i>
+                                        </a>
+                                </th>
+                                <th style="width: 40%;" id="department-accounts-th-full-name">
+                                    <a href="#" onclick="sortByDeptAccFullName()">
+                                            Full Name 
+                                            <i class="fa-solid fa-sort"></i>
+                                            <i class="fa-solid fa-sort-up"></i>
+                                            <i class="fa-solid fa-sort-down"></i>
+                                        </a>
+                                </th>
+                                <th style="width: 25%;">
+                                    Role
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+
+                    </table>
+                    <input type="hidden" id="department-accounts-username_order" value="asc">
+                    <input type="hidden" id="department-accounts-fullName_order" value="asc">
+
+                    <div class="page-nav">
+                        <input type="button" value="Previous">
+                        <div class="page-info" id='department-page-info'>
+
+                        </div>
+                        <input type="button" value="Next">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default save-btn" onclick="saveAccountToDepartment()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

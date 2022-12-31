@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Custom Heading */
+
+.dlv-container .dlv-heading {
+    padding: 40px 20px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.dlv-container a {
+    color: #000;
+    text-decoration: none;
+}
+
+
+/* Custom Filter */
+
+.dlv-container .filter-wrapper {
+    margin-bottom: 10px;
+    margin-left: 30px;
+}
+
+.dlv-container .filter-wrapper .filter-item {
+    display: inline-block;
+    margin-right: 30px;
+}
+
+.dlv-container .filter-item #filter-type-select {
+    height: 26px;
+}
+
+.dlv-container .filter-item .fa-filter {
+    font-size: 18px;
+}
+
+
+/* Custom Function bar */
+
+.dlv-container .table-wrapper {
+    padding: 10px 30px;
+    height: 100%;
+}
+
+.dlv-container .function-bar {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.dlv-container .search-bar {
+    display: inline-block;
+}
+
+.dlv-container .search-icon {
+    position: absolute;
+    font-size: 15px;
+    line-height: 44px;
+    left: 18px;
+}
+
+.dlv-container #search-department-input {
+    margin: 5px 0;
+    width: 300px;
+    font-size: 16px;
+    padding: 8px 20px 8px 40px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.dlv-container .add-sync-del-btn {
+    position: absolute;
+    display: inline-block;
+    right: 10px;
+    line-height: 45px;
+}
+
+
+/* Custom Department Table */
+
+.dlv-container table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 2px solid #000;
+    font-size: 16px;
+}
+
+.dlv-container .dlv-table {
+    padding-bottom: 40px;
+}
+
+.dlv-container th,
+.dlv-container td {
+    text-align: left;
+    padding: 12px;
+    border-right: 1px solid #ccc;
+}
+
+.dlv-container tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.dlv-container tr:hover {
+    background-color: #f1f1f1;
+}
+
+.dlv-container tr i {
+    font-size: 18px;
+}
+
+.dlv-container #mytable th,
+.dlv-container #department-accounts-table th {
+    padding: 3px 3px;
+    font-size: 14px;
+    border-bottom: 1px solid #000;
+}
+
+.dlv-container #mytable th i,
+.dlv-container #department-accounts-table th i {
+    float: right;
+}
+
+.dlv-container #mytable th>a,
+.dlv-container #department-accounts-table th>a {
+    display: block;
+}
+
+
+/* Custom sort icon */
+
+.dlv-container th .fa-sort-up,
+.dlv-container th .fa-sort-down {
+    display: none;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.dlv-container th .fa-solid.fa-sort {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.dlv-container .add-sync-del-btn {
+    margin-right: 20px;
+}
+
+.dlv-container .add-sync-del-btn a {
+    padding: 0px 3px;
+    font-size: 20px;
+}
+
+.dlv-container tbody a {
+    margin: 0 18px;
+}
+
+
+/* Custom paging info */
+
+.dlv-container .table-wrapper .page-nav {
+    float: right;
+    margin-right: 10px;
+}
+
+.dlv-container .page-nav .page-info {
+    display: inline-block;
+    padding: 0 10px
+}
+
+.dlv-container .page-nav input {
+    padding: 0 5px;
+}
+
+
+/* Custom checkbox */
+
+.dlv-container .department-checkbox,
+.dlv-container .department-accounts-checkbox {
+    position: relative;
+}
+
+.dlv-container .department-checkbox input[type="checkbox"],
+.dlv-container .department-accounts-checkbox input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+    margin: 5px 0 0 3px;
+    z-index: 9;
+}
+
+.dlv-container .department-checkbox label:before,
+.dlv-container .department-accounts-checkbox label:before {
+    width: 18px;
+    height: 18px;
+}
+
+.dlv-container .department-checkbox label:before,
+.dlv-container .department-accounts-checkbox label:before {
+    content: '';
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    background: white;
+    border: 1px solid #bbb;
+    border-radius: 2px;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+.dlv-container .department-checkbox input[type="checkbox"]:checked+label:after,
+.dlv-container .department-accounts-checkbox input[type="checkbox"]:checked+label:after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 3px;
+    width: 6px;
+    height: 11px;
+    border: solid #000;
+    border-width: 0 3px 3px 0;
+    transform: inherit;
+    z-index: 3;
+    transform: rotateZ(45deg);
+}
+
+.dlv-container .department-checkbox input[type="checkbox"]:checked+label:before,
+.dlv-container .department-accounts-checkbox input[type="checkbox"]:checked+label:before {
+    border-color: #03A9F4;
+    background: #03A9F4;
+}
+
+.dlv-container .department-checkbox input[type="checkbox"]:checked+label:after,
+.dlv-container .department-accounts-checkbox input[type="checkbox"]:checked+label:after {
+    border-color: #fff;
+}
+
+.dlv-container .department-checkbox input[type="checkbox"]:disabled+label:before,
+.dlv-container .department-accounts-checkbox input[type="checkbox"]:disabled+label:before {
+    color: #b8b8b8;
+    cursor: auto;
+    box-shadow: none;
+    background: #ddd;
+}
